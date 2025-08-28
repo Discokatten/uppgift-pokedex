@@ -1,16 +1,9 @@
-import {
-  fetchAllPokemons,
-  fetchSinglePokemon,
-  getRandomPokemons,
-} from "@/lib/data/pokemons";
-import { getRandomInt } from "@/lib/util";
+import { fetchAllPokemons, fetchSinglePokemon } from "@/lib/data/pokemons";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function FeaturedList() {
   const { results } = await fetchAllPokemons();
-  // const randomId = getRandomPokemons()
-  // console.log(randomId)
   return (
     <ul className="text-black text-bold text-1xl bg-purple-200 m-4 grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))]">
       {/* TODO: Make first char uppercase, add spacing and center content */}

@@ -20,20 +20,15 @@ export async function fetchAllPokemons(limit = 4, offset = 0) {
 }
 
 export async function getRandomPokemons() {
-    const response = await fetch ("https://pokeapi.co/api/v2/pokemon");
-    const data: PokeResponse = await response.json();
-const randomId= getRandomInt(Number(data.count))
-// fetchSinglePokemon(hej.toString())
-console.log("hej",randomId)
-
-return (randomId)
-
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+  const data: PokeResponse = await response.json();
+  const randomId = getRandomInt(Number(data.count));
+  return randomId;
 }
 
-
+// Todo: change try catch to catch error for every api-call
 export async function fetchSinglePokemon(name: string) {
-  
-  const endpoint = `https://pokeapi.co/api/v2/pokemon/${name}`
+  const endpoint = `https://pokeapi.co/api/v2/pokemon/${name}`;
   try {
     const response = await fetch(endpoint);
     const data = await response.json();
