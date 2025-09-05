@@ -1,39 +1,34 @@
-import { fetchAllPokemons, fetchSinglePokemon } from "@/lib/data/pokemons";
-import Image from "next/image";
-import Link from "next/link";
+import { fetchSinglePokemon } from "@/lib/data/pokemons";
+import { getRandomInt, randomize } from "@/lib/util";
+import Card2 from "../components/card2";
 
 export default async function FeaturedList() {
-  const { results } = await fetchAllPokemons();
+  // tar emot en array av random nummer
+  const randomId = getRandomInt();
+
+  const hej = await randomize(4);
+
+  console.log("HEJ", hej);
   return (
-    <ul className="text-black text-bold text-1xl bg-purple-200 m-4 grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))]">
-      {/* TODO: Make first char uppercase, add spacing and center content */}
-      {/* takes pokemons from result, maps name and sends to fetch single pokemon */}
-      {await Promise.all(
-        results.map(async (results) => {
-          const getPokes = results.name;
-          const pokemon = await fetchSinglePokemon(getPokes);
-          return (
-            <li
-              key={pokemon.order}
-              className="bg-blue-100 rounded-md flex justify-center h-100 border-2 border-b-sky-600 p-8 m-8"
-            >
-              <Link
-                href={`/pokemons/${pokemon.order}`}
-                className="text-2xl font-bold hover:text-gray-700"
-              >
-                <Image
-                  className="rounded-full p-1 bg-amber-50"
-                  src={pokemon.img}
-                  alt={pokemon.name}
-                  width={200}
-                  height={300}
-                />
-                {pokemon.name}
-              </Link>
-            </li>
-          );
-        })
-      )}
-    </ul>
+    <section className="text-black text-bold text-1xl bg-purple-100">
+      <h2 className="justify-self-center text-3xl">Featured Pokémon</h2>
+      <ul className="  grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))]">
+        {/* TODO: Make first char uppercase */}
+        {await Promise.all(
+          randomId.map(async (results) => {
+            const getPokes = results;
+            const pokemon = await fetchSinglePokemon(getPokes);
+            if (!pokemon) {
+              return;
+            }
+            return (
+              <div key={pokemon.name}>
+                <Card2 poke={pokemon} />
+              </div>
+            );
+          })
+        )}
+      </ul>
+    </section>
   );
 }

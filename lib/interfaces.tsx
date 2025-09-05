@@ -12,5 +12,17 @@ export interface PokeUrl {
 export interface Pokemon {
   name: string;
   img: string;
-  order: string;
+  id: number;
+  order?: string;
+  hp?: number;
+  attack?: number;
+  defense?: number;
+  types: Type[];
+}
+interface Type {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
 }
