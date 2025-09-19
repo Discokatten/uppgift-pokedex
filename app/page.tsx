@@ -1,4 +1,4 @@
-import FeaturedList from "./components/featuredList";
+import FeaturedList from "./components/featured-list";
 
 export default function Home() {
   return (

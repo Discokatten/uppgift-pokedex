@@ -1,7 +1,7 @@
 import { Pokemon } from "@/lib/interfaces";
 import Link from "next/link";
 import Image from "next/image";
-import TypeBadge from "@/app/components/TypeBadge";
+import TypeBadge from "@/app/components/type-badge";
 
 export default async function PokemonId({ poke }: { poke: Pokemon }) {
   if (!poke) return;

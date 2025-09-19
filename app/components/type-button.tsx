@@ -1,15 +1,16 @@
 "use client";
 import { redirect } from "next/navigation";
-import TypeBadge from "./TypeBadge";
 
-export default function TypeButton({ types }: any) {
+import { PokeUrl } from "@/lib/interfaces";
+
+export default function TypeButton({ name }: PokeUrl) {
   function handleClick() {
-    return redirect(`/types/`);
+    return redirect(`/types/${name}`);
   }
 
-  return types.map((res) => (
-    <button onClick={handleClick}>
-      <TypeBadge key={res.name} name={res.name} url={res.url} />
-    </button>
-  ));
+  return (
+    <span className={`badge badge-${name}`}>
+      <button onClick={handleClick}>{name}</button>
+    </span>
+  );
 }

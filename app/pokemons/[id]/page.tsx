@@ -1,4 +1,4 @@
-import Card2 from "@/app/components/card2";
+import Card from "@/app/components/card";
 import { fetchSinglePokemon } from "@/lib/data/pokemons";
 
 export default async function PokemonId({
@@ -13,5 +13,5 @@ export default async function PokemonId({
     return;
   }
 
-  return <div className="flex justify-center">{<Card2 poke={pokemon} />} </div>;
+  return <div className="flex justify-center">{<Card poke={pokemon} />} </div>;
 }

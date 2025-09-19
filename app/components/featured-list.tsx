@@ -1,14 +1,11 @@
 import { fetchSinglePokemon } from "@/lib/data/pokemons";
-import { getRandomInt, randomize } from "@/lib/util";
-import Card2 from "../components/card2";
+import { getRandomInt } from "@/lib/util";
+import Card from "./card";
 
 export default async function FeaturedList() {
   // tar emot en array av random nummer
   const randomId = getRandomInt();
 
-  const hej = await randomize(4);
-
-  console.log("HEJ", hej);
   return (
     <section className="text-black text-bold text-1xl bg-purple-100">
       <h2 className="justify-self-center text-3xl">Featured Pokémon</h2>
@@ -23,7 +20,7 @@ export default async function FeaturedList() {
             }
             return (
               <div key={pokemon.name}>
-                <Card2 poke={pokemon} />
+                <Card poke={pokemon} />
               </div>
             );
           })

@@ -1,5 +1,5 @@
 import { fetchAllPokemons, fetchSinglePokemon } from "@/lib/data/pokemons";
-import Card2 from "@/app/components/card2";
+import Card from "@/app/components/card";
 export default async function PokemonId({
   searchParams,
 }: {
@@ -16,12 +16,6 @@ const foundPokemons = all.filter((p) =>p.name.includes(query) )
     <div>
       <h2 className="justify-self-center text-3xl"></h2>
       <ul className="  grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))]">
-       {/* {foundPokemons.map((pokemon, index) => {
-        <li key={index}>
-            <p>{pokemon.name}</p>
-        {/* <Card2 poke={pokemon}/> */}
-        {/* </li>  })}   */}
-       
        {/* find first 10 pokemons and render */}
         {await Promise.all(
           foundPokemons.map(async (results, index) => {
@@ -33,7 +27,7 @@ const foundPokemons = all.filter((p) =>p.name.includes(query) )
             }
             return (
               <div key={index}>
-                <Card2 poke={pokemon} />
+                <Card poke={pokemon} />
               </div>
             );
           })

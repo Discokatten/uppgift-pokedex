@@ -7,7 +7,9 @@ export default async function PokemonTypes() {
 
   return (
     <ul className="  grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))]">
-      <TypeButton types={results} />
+      {results.map((type) => (
+        <TypeButton key={type.name} name={type.name} url={type.url} />
+      ))}
     </ul>
   );
 }

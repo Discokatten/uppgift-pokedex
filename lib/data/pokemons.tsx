@@ -1,4 +1,4 @@
-import { PokeResponse, Pokemon } from "../interfaces";
+import { PokeResponse, PokeUrl, Pokemon, PokeTypeRes } from "../interfaces";
 const baseurl = `https://pokeapi.co/api/v2/pokemon`;
 
 export async function fetchAllPokemons(limit = 1100, offset = 0) {
@@ -19,19 +19,8 @@ export async function fetchAllPokemons(limit = 1100, offset = 0) {
   }
 }
 export async function fetchPokemonType() {
-  interface PokeTypeRes {
-    count: number;
-    next: string;
-    previous: null;
-    results: PokeType[];
-  }
-  interface PokeType {
-    name: string;
-    url: string;
-  }
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/type`);
-
     const data: PokeTypeRes = await response.json();
 
     return data;

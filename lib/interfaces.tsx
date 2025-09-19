@@ -19,10 +19,20 @@ export interface Pokemon {
   defense?: number;
   types: Type[];
 }
-interface Type {
+export interface Type {
   slot: number;
   type: {
     name: string;
     url: string;
   };
 }
+export interface PokeTypeRes {
+    count: number;
+    next: string;
+    previous: null;
+    results: PokeUrl[];
+  }
+  interface PokeType {
+    name: string;
+    url: string;
+  }
