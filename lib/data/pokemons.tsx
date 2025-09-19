@@ -1,9 +1,11 @@
-import { PokeResponse, PokeUrl, Pokemon, PokeTypeRes } from "../interfaces";
-const baseurl = `https://pokeapi.co/api/v2/pokemon`;
+import { PokeResponse, Pokemon } from "../interfaces";
+const baseurl = `https://pokeapi.co/api/v2/`;
 
 export async function fetchAllPokemons(limit = 1100, offset = 0) {
   try {
-    const response = await fetch(`${baseurl}?limit=${limit}&offset=${offset}`);
+    const response = await fetch(
+      `${baseurl}pokemon/?limit=${limit}&offset=${offset}`
+    );
     if (!response.ok) {
       throw new Error("bad response");
     }
@@ -20,8 +22,8 @@ export async function fetchAllPokemons(limit = 1100, offset = 0) {
 }
 export async function fetchPokemonType() {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/type`);
-    const data: PokeTypeRes = await response.json();
+    const response = await fetch(`${baseurl}/type`);
+    const data: PokeResponse = await response.json();
 
     return data;
   } catch (error) {
@@ -37,7 +39,7 @@ export async function fetchPokemonType() {
 export async function fetchSinglePokemon(name: any | []) {
   const identifier = `/${name}`;
   try {
-    const response = await fetch(`${baseurl}${identifier}`);
+    const response = await fetch(`${baseurl}pokemon/${identifier}`);
     if (!response.ok) {
       return;
     }

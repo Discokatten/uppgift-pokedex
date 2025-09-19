@@ -26,13 +26,3 @@ export interface Type {
     url: string;
   };
 }
-export interface PokeTypeRes {
-    count: number;
-    next: string;
-    previous: null;
-    results: PokeUrl[];
-  }
-  interface PokeType {
-    name: string;
-    url: string;
-  }

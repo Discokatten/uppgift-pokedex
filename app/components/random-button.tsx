@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { getRandomInt } from "@/lib/util";
+import { getRandomInt } from "@/lib/utils/randomize";
 
 export default function RandomButton() {
   function handleClick() {

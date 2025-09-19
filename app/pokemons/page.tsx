@@ -1,4 +1,4 @@
-import { fetchAllPokemons, fetchSinglePokemon } from "@/lib/data/pokemons";
+import { fetchAllPokemons, fetchSinglePokemon, fetchPokemonType} from "@/lib/data/pokemons";
 import Card from "@/app/components/card";
 export default async function PokemonId({
   searchParams,
@@ -8,10 +8,12 @@ export default async function PokemonId({
   const { results } = await fetchAllPokemons(10, 0);
   if (!results) return
   const { results: all } = await fetchAllPokemons();
+    const { results: pokeTypes } = await fetchPokemonType();
+  
 const {query} = await searchParams
 if (!query) return
-const foundPokemons = all.filter((p) =>p.name.includes(query) )
-
+const foundPokemons = all.filter((p) =>p.name.includes(query))
+const pokeType = pokeTypes.filter((p) => p.name.includes(query))
   return (
     <div>
       <h2 className="justify-self-center text-3xl"></h2>

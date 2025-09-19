@@ -1,5 +1,5 @@
 import { fetchSinglePokemon } from "@/lib/data/pokemons";
-import { getRandomInt } from "@/lib/util";
+import { getRandomInt } from "@/lib/utils/randomize";
 import Card from "./card";
 
 export default async function FeaturedList() {
